@@ -24,7 +24,7 @@ class GetFuturesMarginRequest extends \Google\Protobuf\Internal\Message
      */
     protected $figi = '';
     /**
-     *Идентификатор инструмента — `figi` или `instrument_uid`.
+     *Идентификатор инструмента. Принимает значение `figi`, `instrument_uid` или `ticker + '_' + class_code`.
      *
      * Generated from protobuf field <code>string instrument_id = 4 [(.google.api.field_behavior) = REQUIRED];</code>
      */
@@ -39,7 +39,7 @@ class GetFuturesMarginRequest extends \Google\Protobuf\Internal\Message
      *     @type string $figi
      *           Идентификатор инструмента.
      *     @type string $instrument_id
-     *          Идентификатор инструмента — `figi` или `instrument_uid`.
+     *          Идентификатор инструмента. Принимает значение `figi`, `instrument_uid` или `ticker + '_' + class_code`.
      * }
      */
     public function __construct($data = NULL) {
@@ -80,7 +80,7 @@ class GetFuturesMarginRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *Идентификатор инструмента — `figi` или `instrument_uid`.
+     *Идентификатор инструмента. Принимает значение `figi`, `instrument_uid` или `ticker + '_' + class_code`.
      *
      * Generated from protobuf field <code>string instrument_id = 4 [(.google.api.field_behavior) = REQUIRED];</code>
      * @return string
@@ -91,7 +91,7 @@ class GetFuturesMarginRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *Идентификатор инструмента — `figi` или `instrument_uid`.
+     *Идентификатор инструмента. Принимает значение `figi`, `instrument_uid` или `ticker + '_' + class_code`.
      *
      * Generated from protobuf field <code>string instrument_id = 4 [(.google.api.field_behavior) = REQUIRED];</code>
      * @param string $var

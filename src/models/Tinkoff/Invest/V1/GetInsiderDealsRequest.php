@@ -17,14 +17,20 @@ use Google\Protobuf\RepeatedField;
 class GetInsiderDealsRequest extends \Google\Protobuf\Internal\Message
 {
     /**
+     * Идентификатор инструмента. Принимает значение `figi`, `instrument_uid` или `ticker + '_' + class_code`.
+     *
      * Generated from protobuf field <code>string instrument_id = 1;</code>
      */
     protected $instrument_id = '';
     /**
+     * Количество выводимых записей в ответе, не больше 100.
+     *
      * Generated from protobuf field <code>int32 limit = 2;</code>
      */
     protected $limit = 0;
     /**
+     * Курсор.
+     *
      * Generated from protobuf field <code>optional string next_cursor = 3;</code>
      */
     protected $next_cursor = null;
@@ -36,8 +42,11 @@ class GetInsiderDealsRequest extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type string $instrument_id
+     *           Идентификатор инструмента. Принимает значение `figi`, `instrument_uid` или `ticker + '_' + class_code`.
      *     @type int $limit
+     *           Количество выводимых записей в ответе, не больше 100.
      *     @type string $next_cursor
+     *           Курсор.
      * }
      */
     public function __construct($data = NULL) {
@@ -46,6 +55,8 @@ class GetInsiderDealsRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * Идентификатор инструмента. Принимает значение `figi`, `instrument_uid` или `ticker + '_' + class_code`.
+     *
      * Generated from protobuf field <code>string instrument_id = 1;</code>
      * @return string
      */
@@ -55,6 +66,8 @@ class GetInsiderDealsRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * Идентификатор инструмента. Принимает значение `figi`, `instrument_uid` или `ticker + '_' + class_code`.
+     *
      * Generated from protobuf field <code>string instrument_id = 1;</code>
      * @param string $var
      * @return $this
@@ -68,6 +81,8 @@ class GetInsiderDealsRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * Количество выводимых записей в ответе, не больше 100.
+     *
      * Generated from protobuf field <code>int32 limit = 2;</code>
      * @return int
      */
@@ -77,6 +92,8 @@ class GetInsiderDealsRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * Количество выводимых записей в ответе, не больше 100.
+     *
      * Generated from protobuf field <code>int32 limit = 2;</code>
      * @param int $var
      * @return $this
@@ -90,6 +107,8 @@ class GetInsiderDealsRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * Курсор.
+     *
      * Generated from protobuf field <code>optional string next_cursor = 3;</code>
      * @return string
      */
@@ -109,6 +128,8 @@ class GetInsiderDealsRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * Курсор.
+     *
      * Generated from protobuf field <code>optional string next_cursor = 3;</code>
      * @param string $var
      * @return $this

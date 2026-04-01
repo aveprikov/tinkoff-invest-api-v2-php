@@ -1,7 +1,7 @@
 asyncapi: 2.6.0
 info:
   title: T-Invest API
-  version: '1.44'
+  version: '1.48'
   description: Websocket API for streaming data
   license:
     name: Apache 2.0
@@ -1097,6 +1097,7 @@ components:
          - SECURITY_TRADING_STATUS_DEALER_NORMAL_TRADING: Доступна торговля в режиме внутренней ликвидности брокера.
          - SECURITY_TRADING_STATUS_DEALER_BREAK_IN_TRADING: Перерыв торговли в режиме внутренней ликвидности брокера.
          - SECURITY_TRADING_STATUS_DEALER_NOT_AVAILABLE_FOR_TRADING: Недоступна торговля в режиме внутренней ликвидности брокера.
+         - SECURITY_TRADING_STATUS_STABILIZATION_AUCTION: Аукцион обновления цен.
       enum:
         - SECURITY_TRADING_STATUS_UNSPECIFIED
         - SECURITY_TRADING_STATUS_NOT_AVAILABLE_FOR_TRADING
@@ -1115,6 +1116,7 @@ components:
         - SECURITY_TRADING_STATUS_DEALER_NORMAL_TRADING
         - SECURITY_TRADING_STATUS_DEALER_BREAK_IN_TRADING
         - SECURITY_TRADING_STATUS_DEALER_NOT_AVAILABLE_FOR_TRADING
+        - SECURITY_TRADING_STATUS_STABILIZATION_AUCTION
       title: Режим торгов инструмента
       type: string
     v1Ping:
@@ -1802,6 +1804,7 @@ components:
          - INSTRUMENT_TYPE_CLEARING_CERTIFICATE: Clearing certificate.
          - INSTRUMENT_TYPE_INDEX: Индекс.
          - INSTRUMENT_TYPE_COMMODITY: Товар.
+         - INSTRUMENT_TYPE_DFA: Цифровой актив.
       enum:
         - INSTRUMENT_TYPE_UNSPECIFIED
         - INSTRUMENT_TYPE_BOND
@@ -1814,6 +1817,7 @@ components:
         - INSTRUMENT_TYPE_CLEARING_CERTIFICATE
         - INSTRUMENT_TYPE_INDEX
         - INSTRUMENT_TYPE_COMMODITY
+        - INSTRUMENT_TYPE_DFA
       type: string
     v1MoneyValue:
       description: Денежная сумма в определенной валюте.
@@ -1972,6 +1976,10 @@ components:
             units: units
           accountId: accountId
           totalAmountCurrencies:
+            nano: 5
+            currency: currency
+            units: units
+          totalAmountDfa:
             nano: 5
             currency: currency
             units: units
@@ -2246,6 +2254,10 @@ components:
           nano: 5
           currency: currency
           units: units
+        totalAmountDfa:
+          nano: 5
+          currency: currency
+          units: units
         dailyYield:
           nano: 5
           currency: currency
@@ -2369,6 +2381,8 @@ components:
           $ref: '#/components/schemas/v1MoneyValue'
         dailyYieldRelative:
           $ref: '#/components/schemas/v1Quotation'
+        totalAmountDfa:
+          $ref: '#/components/schemas/v1MoneyValue'
       type: object
     v1PortfolioPosition:
       description: Позиции портфеля.

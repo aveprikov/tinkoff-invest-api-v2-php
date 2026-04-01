@@ -15,7 +15,7 @@ use Google\Protobuf\RepeatedField;
 class BondEvent extends \Google\Protobuf\Internal\Message
 {
     /**
-     * Идентификатор инструмента.
+     * Идентификатор инструмента. Принимает значение `figi`, `instrument_uid` или `ticker + '_' + class_code`.
      *
      * Generated from protobuf field <code>string instrument_id = 2;</code>
      */
@@ -148,7 +148,7 @@ class BondEvent extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type string $instrument_id
-     *           Идентификатор инструмента.
+     *           Идентификатор инструмента. Принимает значение `figi`, `instrument_uid` или `ticker + '_' + class_code`.
      *     @type int $event_number
      *           Номер события для данного типа события.
      *     @type \Google\Protobuf\Timestamp $event_date
@@ -197,7 +197,7 @@ class BondEvent extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Идентификатор инструмента.
+     * Идентификатор инструмента. Принимает значение `figi`, `instrument_uid` или `ticker + '_' + class_code`.
      *
      * Generated from protobuf field <code>string instrument_id = 2;</code>
      * @return string
@@ -208,7 +208,7 @@ class BondEvent extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Идентификатор инструмента.
+     * Идентификатор инструмента. Принимает значение `figi`, `instrument_uid` или `ticker + '_' + class_code`.
      *
      * Generated from protobuf field <code>string instrument_id = 2;</code>
      * @param string $var

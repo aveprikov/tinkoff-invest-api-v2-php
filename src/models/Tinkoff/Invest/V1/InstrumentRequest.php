@@ -17,7 +17,7 @@ use Google\Protobuf\RepeatedField;
 class InstrumentRequest extends \Google\Protobuf\Internal\Message
 {
     /**
-     * Тип идентификатора инструмента. Возможные значения — `figi`, `ticker`. [Подробнее об идентификации инструментов](./faq_identification/).
+     * Тип идентификатора инструмента. Возможные значения — `figi`, `ticker`. [Подробнее об идентификации инструментов](/invest/intro/intro/faq_identification).
      *
      * Generated from protobuf field <code>.tinkoff.public.invest.api.contract.v1.InstrumentIdType id_type = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
@@ -42,7 +42,7 @@ class InstrumentRequest extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type int $id_type
-     *           Тип идентификатора инструмента. Возможные значения — `figi`, `ticker`. [Подробнее об идентификации инструментов](./faq_identification/).
+     *           Тип идентификатора инструмента. Возможные значения — `figi`, `ticker`. [Подробнее об идентификации инструментов](/invest/intro/intro/faq_identification).
      *     @type string $class_code
      *           Идентификатор `class_code`. Обязательный, если `id_type = ticker`.
      *     @type string $id
@@ -55,7 +55,7 @@ class InstrumentRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Тип идентификатора инструмента. Возможные значения — `figi`, `ticker`. [Подробнее об идентификации инструментов](./faq_identification/).
+     * Тип идентификатора инструмента. Возможные значения — `figi`, `ticker`. [Подробнее об идентификации инструментов](/invest/intro/intro/faq_identification).
      *
      * Generated from protobuf field <code>.tinkoff.public.invest.api.contract.v1.InstrumentIdType id_type = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      * @return int
@@ -66,7 +66,7 @@ class InstrumentRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Тип идентификатора инструмента. Возможные значения — `figi`, `ticker`. [Подробнее об идентификации инструментов](./faq_identification/).
+     * Тип идентификатора инструмента. Возможные значения — `figi`, `ticker`. [Подробнее об идентификации инструментов](/invest/intro/intro/faq_identification).
      *
      * Generated from protobuf field <code>.tinkoff.public.invest.api.contract.v1.InstrumentIdType id_type = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      * @param int $var

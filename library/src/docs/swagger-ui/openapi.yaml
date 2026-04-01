@@ -4,7 +4,7 @@ info:
   termsOfService: "https://www.tbank.ru/invest/disclaimers/basic-information/"
   contact:
     email: "invest-public-api@tbank.ru"
-  version: "1.44"
+  version: "1.48"
   license:
     name: "Apache 2.0"
     url: "https://www.apache.org/licenses/LICENSE-2.0"
@@ -533,6 +533,173 @@ paths:
                 $ref: "#/components/schemas/rpcStatus"
           description: "An unexpected error response"
       summary: "DeleteFavoriteGroup — удалить группу избранных инструментов"
+      tags:
+        - "InstrumentsService"
+      x-codegen-request-body-name: "body"
+  /tinkoff.public.invest.api.contract.v1.InstrumentsService/DfaBy:
+    post:
+      operationId: "InstrumentsService_DfaBy"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/v1InstrumentRequest"
+        description: "Запрос получения инструмента по идентификатору."
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1DfaResponse"
+          description: "A successful response"
+        "400":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: "#/components/schemas/ErrorResponse"
+              example:
+                code: 3
+                message: "interval is invalid"
+                description: 30011
+        "401":
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: "#/components/schemas/ErrorResponse"
+              example:
+                code: 16
+                message: "authentication token is missing or invalid"
+                description: 40003
+        "403":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: "#/components/schemas/ErrorResponse"
+              example:
+                code: 7
+                message: "insufficient privileges"
+                description: 40002
+        "404":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: "#/components/schemas/ErrorResponse"
+              example:
+                code: 5
+                message: "account not found"
+                description: 50004
+        "408":
+          description: "Request Timeout"
+        "415":
+          description: "Unsupported Media Type"
+        "429":
+          description: "Too Many Requests"
+        "500":
+          description: "Internal Server Error"
+        "501":
+          description: "Not Implemented"
+        "503":
+          description: "Service Unavailable"
+        "504":
+          description: "Gateway Timeout"
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/rpcStatus"
+          description: "An unexpected error response"
+      tags:
+        - "InstrumentsService"
+      x-codegen-request-body-name: "body"
+  /tinkoff.public.invest.api.contract.v1.InstrumentsService/Dfas:
+    post:
+      operationId: "InstrumentsService_Dfas"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/v1DfasRequest"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1DfasResponse"
+          description: "A successful response"
+        "400":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: "#/components/schemas/ErrorResponse"
+              example:
+                code: 3
+                message: "interval is invalid"
+                description: 30011
+        "401":
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: "#/components/schemas/ErrorResponse"
+              example:
+                code: 16
+                message: "authentication token is missing or invalid"
+                description: 40003
+        "403":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: "#/components/schemas/ErrorResponse"
+              example:
+                code: 7
+                message: "insufficient privileges"
+                description: 40002
+        "404":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: "#/components/schemas/ErrorResponse"
+              example:
+                code: 5
+                message: "account not found"
+                description: 50004
+        "408":
+          description: "Request Timeout"
+        "415":
+          description: "Unsupported Media Type"
+        "429":
+          description: "Too Many Requests"
+        "500":
+          description: "Internal Server Error"
+        "501":
+          description: "Not Implemented"
+        "503":
+          description: "Service Unavailable"
+        "504":
+          description: "Gateway Timeout"
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/rpcStatus"
+          description: "An unexpected error response"
       tags:
         - "InstrumentsService"
       x-codegen-request-body-name: "body"
@@ -8264,6 +8431,91 @@ paths:
         - "UsersService"
       x-codegen-request-body-name: "body"
       description: "Перевести денежные средства между брокерскими счетами"
+  /tinkoff.public.invest.api.contract.v1.UsersService/GetAccountValues:
+    post:
+      operationId: "UsersService_GetAccountValues"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/v1GetAccountValuesRequest"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1GetAccountValuesResponse"
+          description: "A successful response"
+        "400":
+          description: "Bad Request"
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: "#/components/schemas/ErrorResponse"
+              example:
+                code: 3
+                message: "interval is invalid"
+                description: 30011
+        "401":
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: "#/components/schemas/ErrorResponse"
+              example:
+                code: 16
+                message: "authentication token is missing or invalid"
+                description: 40003
+        "403":
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: "#/components/schemas/ErrorResponse"
+              example:
+                code: 7
+                message: "insufficient privileges"
+                description: 40002
+        "404":
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: "#/components/schemas/ErrorResponse"
+              example:
+                code: 5
+                message: "account not found"
+                description: 50004
+        "408":
+          description: "Request Timeout"
+        "415":
+          description: "Unsupported Media Type"
+        "429":
+          description: "Too Many Requests"
+        "500":
+          description: "Internal Server Error"
+        "501":
+          description: "Not Implemented"
+        "503":
+          description: "Service Unavailable"
+        "504":
+          description: "Gateway Timeout"
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/rpcStatus"
+          description: "An unexpected error response"
+      summary: "GetAccountValues — дополнительные показатели счетов"
+      tags:
+        - "UsersService"
+      x-codegen-request-body-name: "body"
+      description: "Метод предназначен для получения дополнительных показателей счетов"
   /tinkoff.public.invest.api.contract.v1.UsersService/GetAccounts:
     post:
       operationId: "UsersService_GetAccounts"
@@ -8781,6 +9033,21 @@ paths:
       description: "Пополнить брокерский счёт с банковского"
 components:
   schemas:
+    DfaResponseForecastYield:
+      description: "Прогнозная доходность смарт-портфелей."
+      example:
+        minValue:
+          nano: 6
+          units: "units"
+        maxValue:
+          nano: 6
+          units: "units"
+      properties:
+        minValue:
+          $ref: "#/components/schemas/v1Quotation"
+        maxValue:
+          $ref: "#/components/schemas/v1Quotation"
+      type: "object"
     GetAssetFundamentalsResponseStatisticResponse:
       example:
         domicileIndicatorCode: "domicileIndicatorCode"
@@ -9147,7 +9414,7 @@ components:
         payDate: 2000-01-23T04:56:07.000Z
       properties:
         instrumentId:
-          description: "Идентификатор инструмента."
+          description: "Идентификатор инструмента. Принимает значение `figi`, `instrument_uid` или `ticker + '_' + class_code`."
           type: "string"
         eventNumber:
           description: "Номер события для данного типа события."
@@ -9732,22 +9999,6 @@ components:
           description: "Ошибка."
           type: "string"
       type: "object"
-    StructuredNoteBasicAsset:
-      description: "Базовый актив."
-      example:
-        uid: "uid"
-        initialPrice:
-          nano: 6
-          units: "units"
-      properties:
-        uid:
-          description: "Уникальный идентификатор базового актива."
-          type: "string"
-        type:
-          $ref: "#/components/schemas/v1AssetType"
-        initialPrice:
-          $ref: "#/components/schemas/v1Quotation"
-      type: "object"
     StructuredNoteLogicPortfolio:
       default: "LOGIC_PORTFOLIO_UNSPECIFIED"
       description: "Стратегия портфеля.\n\n - LOGIC_PORTFOLIO_UNSPECIFIED: Стратегия портфеля не определена.\n - LOGIC_PORTFOLIO_VOLATILITY: Волатильность.\n - LOGIC_PORTFOLIO_CORRELATION: Корреляция."
@@ -10027,7 +10278,7 @@ components:
       type: "object"
     v1AccountType:
       default: "ACCOUNT_TYPE_UNSPECIFIED"
-      description: "Тип счeта.\n\n - ACCOUNT_TYPE_UNSPECIFIED: Тип аккаунта не определeн.\n - ACCOUNT_TYPE_TINKOFF: Брокерский счeт Т-Инвестиций.\n - ACCOUNT_TYPE_TINKOFF_IIS: ИИС.\n - ACCOUNT_TYPE_INVEST_BOX: Инвесткопилка.\n - ACCOUNT_TYPE_INVEST_FUND: Фонд денежного рынка.\n - ACCOUNT_TYPE_DEBIT: Дебетовый карточный счeт.\n - ACCOUNT_TYPE_SAVING: Накопительный счeт."
+      description: "Тип счeта.\n\n - ACCOUNT_TYPE_UNSPECIFIED: Тип аккаунта не определeн.\n - ACCOUNT_TYPE_TINKOFF: Брокерский счeт Т-Инвестиций.\n - ACCOUNT_TYPE_TINKOFF_IIS: ИИС.\n - ACCOUNT_TYPE_INVEST_BOX: Инвесткопилка.\n - ACCOUNT_TYPE_INVEST_FUND: Фонд денежного рынка.\n - ACCOUNT_TYPE_DEBIT: Дебетовый карточный счeт.\n - ACCOUNT_TYPE_SAVING: Накопительный счeт.\n - ACCOUNT_TYPE_DFA: Смарт-счет."
       enum:
         - "ACCOUNT_TYPE_UNSPECIFIED"
         - "ACCOUNT_TYPE_TINKOFF"
@@ -10036,7 +10287,38 @@ components:
         - "ACCOUNT_TYPE_INVEST_FUND"
         - "ACCOUNT_TYPE_DEBIT"
         - "ACCOUNT_TYPE_SAVING"
+        - "ACCOUNT_TYPE_DFA"
       type: "string"
+    v1AccountValue:
+      default: "ACCOUNT_VALUE_UNSPECIFIED"
+      description: " - ACCOUNT_VALUE_UNSPECIFIED: Не определён.\n - ACCOUNT_VALUE_MARGIN_FEE: Размер комиссии за маржинальное кредитование.\n - ACCOUNT_VALUE_AMOUNT_WITHOUT_EXTRA_FEE: Остаток доступного лимита с текущей комиссией."
+      enum:
+        - "ACCOUNT_VALUE_UNSPECIFIED"
+        - "ACCOUNT_VALUE_MARGIN_FEE"
+        - "ACCOUNT_VALUE_AMOUNT_WITHOUT_EXTRA_FEE"
+      type: "string"
+    v1AccountValuesWithParameters:
+      example:
+        accountId: "accountId"
+        values:
+          - value:
+              nano: 5
+              currency: "currency"
+              units: "units"
+          - value:
+              nano: 5
+              currency: "currency"
+              units: "units"
+      properties:
+        accountId:
+          description: "Номер счета."
+          type: "string"
+        values:
+          description: "Массив параметров инструмента."
+          items:
+            $ref: "#/components/schemas/v1InstrumentParameter"
+          type: "array"
+      type: "object"
     v1AccruedInterest:
       description: "Операция начисления купонов."
       example:
@@ -12119,6 +12401,7 @@ components:
           pagesCount: 6
           page: 1
           itemsCount: 0
+          taskId: "taskId"
       properties:
         generateBrokerReportResponse:
           $ref: "#/components/schemas/v1GenerateBrokerReportResponse"
@@ -12874,6 +13157,244 @@ components:
       title: "Запрос удаления избранной группы"
       type: "object"
     v1DeleteFavoriteGroupResponse:
+      type: "object"
+    v1DfaResponse:
+      example:
+        bestpriceOrderAvailableFlag: true
+        type: "type"
+        lot: 0
+        uid: "uid"
+        nominal:
+          nano: 5
+          currency: "currency"
+          units: "units"
+        maturityDate: 2000-01-23T04:56:07.000Z
+        sellAvailableFlag: true
+        forecastYield:
+          minValue:
+            nano: 6
+            units: "units"
+          maxValue:
+            nano: 6
+            units: "units"
+        currency: "currency"
+        aciValue:
+          nano: 6
+          units: "units"
+        buyAvailableFlag: true
+        ticker: "ticker"
+        yieldToMaturity:
+          nano: 6
+          units: "units"
+        forQualInvestorFlag: true
+        basicAssets:
+          - uid: "uid"
+          - uid: "uid"
+        forIisFlag: true
+        positionUid: "positionUid"
+        apiTradeAvailableFlag: true
+        shortEnabledFlag: true
+        couponValue:
+          nano: 6
+          units: "units"
+        minPriceIncrement:
+          nano: 6
+          units: "units"
+        limitOrderAvailableFlag: true
+        couponPaymentFrequency: 6
+        marketOrderAvailableFlag: true
+        name: "name"
+        couponPaymentDate: 2000-01-23T04:56:07.000Z
+      properties:
+        uid:
+          description: "Уникальный идентификатор инструмента."
+          type: "string"
+        ticker:
+          description: "Тикер инструмента."
+          type: "string"
+        name:
+          description: "Название инструмента."
+          type: "string"
+        positionUid:
+          description: "Уникальный идентификатор позиции."
+          type: "string"
+        minPriceIncrement:
+          $ref: "#/components/schemas/v1Quotation"
+        lot:
+          description: "Количество лотов."
+          format: "int32"
+          type: "integer"
+        nominal:
+          $ref: "#/components/schemas/v1MoneyValue"
+        currency:
+          description: "Валюта."
+          type: "string"
+        maturityDate:
+          description: "Дата погашения ЦФА в формате UTC."
+          format: "date-time"
+          type: "string"
+        shortEnabledFlag:
+          description: "Признак доступности для операций шорт."
+          type: "boolean"
+        apiTradeAvailableFlag:
+          description: "Признак доступности торгов по бумаге через API."
+          type: "boolean"
+        buyAvailableFlag:
+          description: "Признак доступности для покупки."
+          type: "boolean"
+        sellAvailableFlag:
+          description: "Признак доступности для продажи."
+          type: "boolean"
+        limitOrderAvailableFlag:
+          description: "Признак доступности выставления лимитной заявки по инструменту."
+          type: "boolean"
+        marketOrderAvailableFlag:
+          description: "Признак доступности выставления рыночной заявки по инструменту."
+          type: "boolean"
+        bestpriceOrderAvailableFlag:
+          description: "Признак доступности выставления bestprice заявки по инструменту."
+          type: "boolean"
+        forIisFlag:
+          description: "Возможность покупки/продажи на ИИС."
+          type: "boolean"
+        forQualInvestorFlag:
+          description: "Флаг отображающий доступность торговли инструментом только для квалифицированных инвесторов."
+          type: "boolean"
+        type:
+          description: "Тип актива. Возможные значения: credit_portfolio_dfa, debt_dfa."
+          type: "string"
+        basicAssets:
+          description: "Базовые активы, входящие в ЦФА."
+          items:
+            $ref: "#/components/schemas/v1DfaResponseBasicAsset"
+          type: "array"
+        forecastYield:
+          $ref: "#/components/schemas/DfaResponseForecastYield"
+        yieldToMaturity:
+          $ref: "#/components/schemas/v1Quotation"
+        couponValue:
+          $ref: "#/components/schemas/v1Quotation"
+        couponPaymentFrequency:
+          description: "Количество выплат в год."
+          format: "int32"
+          type: "integer"
+        couponPaymentDate:
+          description: "Дата выплаты купона."
+          format: "date-time"
+          type: "string"
+        aciValue:
+          $ref: "#/components/schemas/v1Quotation"
+      type: "object"
+    v1DfaResponseBasicAsset:
+      description: "Базовый актив."
+      example:
+        uid: "uid"
+      properties:
+        uid:
+          title: "UID базового актива"
+          type: "string"
+      type: "object"
+    v1DfasRequest:
+      type: "object"
+    v1DfasResponse:
+      example:
+        instruments:
+          - bestpriceOrderAvailableFlag: true
+            type: "type"
+            lot: 0
+            uid: "uid"
+            nominal:
+              nano: 5
+              currency: "currency"
+              units: "units"
+            maturityDate: 2000-01-23T04:56:07.000Z
+            sellAvailableFlag: true
+            forecastYield:
+              minValue:
+                nano: 6
+                units: "units"
+              maxValue:
+                nano: 6
+                units: "units"
+            currency: "currency"
+            aciValue:
+              nano: 6
+              units: "units"
+            buyAvailableFlag: true
+            ticker: "ticker"
+            yieldToMaturity:
+              nano: 6
+              units: "units"
+            forQualInvestorFlag: true
+            basicAssets:
+              - uid: "uid"
+              - uid: "uid"
+            forIisFlag: true
+            positionUid: "positionUid"
+            apiTradeAvailableFlag: true
+            shortEnabledFlag: true
+            couponValue:
+              nano: 6
+              units: "units"
+            minPriceIncrement:
+              nano: 6
+              units: "units"
+            limitOrderAvailableFlag: true
+            couponPaymentFrequency: 6
+            marketOrderAvailableFlag: true
+            name: "name"
+            couponPaymentDate: 2000-01-23T04:56:07.000Z
+          - bestpriceOrderAvailableFlag: true
+            type: "type"
+            lot: 0
+            uid: "uid"
+            nominal:
+              nano: 5
+              currency: "currency"
+              units: "units"
+            maturityDate: 2000-01-23T04:56:07.000Z
+            sellAvailableFlag: true
+            forecastYield:
+              minValue:
+                nano: 6
+                units: "units"
+              maxValue:
+                nano: 6
+                units: "units"
+            currency: "currency"
+            aciValue:
+              nano: 6
+              units: "units"
+            buyAvailableFlag: true
+            ticker: "ticker"
+            yieldToMaturity:
+              nano: 6
+              units: "units"
+            forQualInvestorFlag: true
+            basicAssets:
+              - uid: "uid"
+              - uid: "uid"
+            forIisFlag: true
+            positionUid: "positionUid"
+            apiTradeAvailableFlag: true
+            shortEnabledFlag: true
+            couponValue:
+              nano: 6
+              units: "units"
+            minPriceIncrement:
+              nano: 6
+              units: "units"
+            limitOrderAvailableFlag: true
+            couponPaymentFrequency: 6
+            marketOrderAvailableFlag: true
+            name: "name"
+            couponPaymentDate: 2000-01-23T04:56:07.000Z
+      properties:
+        instruments:
+          description: "Массив инструментов."
+          items:
+            $ref: "#/components/schemas/v1DfaResponse"
+          type: "array"
       type: "object"
     v1Dividend:
       description: "Информация о выплате."
@@ -14140,6 +14661,49 @@ components:
           description: "Идентификатор задачи формирования отчета."
           type: "string"
       type: "object"
+    v1GetAccountValuesRequest:
+      properties:
+        accounts:
+          description: "Массив счетов пользователя."
+          items:
+            type: "string"
+          type: "array"
+        values:
+          description: "Массив запрашиваемых параметров."
+          items:
+            $ref: "#/components/schemas/v1AccountValue"
+          type: "array"
+      type: "object"
+    v1GetAccountValuesResponse:
+      example:
+        accounts:
+          - accountId: "accountId"
+            values:
+              - value:
+                  nano: 5
+                  currency: "currency"
+                  units: "units"
+              - value:
+                  nano: 5
+                  currency: "currency"
+                  units: "units"
+          - accountId: "accountId"
+            values:
+              - value:
+                  nano: 5
+                  currency: "currency"
+                  units: "units"
+              - value:
+                  nano: 5
+                  currency: "currency"
+                  units: "units"
+      properties:
+        accounts:
+          description: "Массив счетов с параметрами."
+          items:
+            $ref: "#/components/schemas/v1AccountValuesWithParameters"
+          type: "array"
+      type: "object"
     v1GetAccountsRequest:
       description: "Запрос получения счетов пользователя."
       properties:
@@ -14177,7 +14741,7 @@ components:
           format: "date-time"
           type: "string"
         instrumentId:
-          description: "Идентификатор инструмента — `figi` или `instrument_uid`."
+          description: "Идентификатор инструмента. Принимает значение `figi`, `instrument_uid` или `ticker + '_' + class_code`."
           type: "string"
       required:
         - "from"
@@ -14351,7 +14915,7 @@ components:
     v1GetAssetReportsRequest:
       properties:
         instrumentId:
-          description: "Идентификатор инструмента в формате UID."
+          description: "Идентификатор инструмента. Принимает значение `figi`, `instrument_uid` или `ticker + '_' + class_code`."
           type: "string"
         from:
           description: "Начало запрашиваемого периода по UTC."
@@ -14432,7 +14996,7 @@ components:
           format: "date-time"
           type: "string"
         instrumentId:
-          description: "Идентификатор инструмента — `figi` или `instrument_uid`."
+          description: "Идентификатор инструмента. Принимает значение `figi`, `instrument_uid` или `ticker + '_' + class_code`."
           type: "string"
       required:
         - "instrumentId"
@@ -14726,6 +15290,7 @@ components:
         pagesCount: 6
         page: 1
         itemsCount: 0
+        taskId: "taskId"
       properties:
         brokerReport:
           items:
@@ -14743,6 +15308,9 @@ components:
           description: "Текущая страница, начинается с 0."
           format: "int32"
           type: "integer"
+        taskId:
+          description: "Идентификатор задачи формирования брокерского отчета."
+          type: "string"
       type: "object"
     v1GetCandlesRequest:
       description: "Запрос исторических свечей."
@@ -15110,7 +15678,7 @@ components:
           format: "date-time"
           type: "string"
         instrumentId:
-          description: "Идентификатор инструмента — `figi` или `instrument_uid`."
+          description: "Идентификатор инструмента. Принимает значение `figi`, `instrument_uid` или `ticker + '_' + class_code`."
           type: "string"
       required:
         - "instrumentId"
@@ -15240,7 +15808,7 @@ components:
       description: "Запрос прогнозов инвестдомов."
       properties:
         instrumentId:
-          description: "Идентификатор инструмента."
+          description: "Идентификатор инструмента. Принимает значение `figi`, `instrument_uid` или `ticker + '_' + class_code`."
           type: "string"
       type: "object"
     v1GetForecastResponse:
@@ -15317,7 +15885,7 @@ components:
     v1GetFuturesMarginRequest:
       properties:
         instrumentId:
-          description: "Идентификатор инструмента — `figi` или `instrument_uid`."
+          description: "Идентификатор инструмента. Принимает значение `figi`, `instrument_uid` или `ticker + '_' + class_code`."
           type: "string"
       required:
         - "instrumentId"
@@ -15389,11 +15957,14 @@ components:
     v1GetInsiderDealsRequest:
       properties:
         instrumentId:
+          description: "Идентификатор инструмента. Принимает значение `figi`, `instrument_uid` или `ticker + '_' + class_code`."
           type: "string"
         limit:
+          description: "Количество выводимых записей в ответе, не больше 100."
           format: "int32"
           type: "integer"
         nextCursor:
+          description: "Курсор."
           type: "string"
       title: "Запрос сделок по инсайдерам"
       type: "object"
@@ -15563,6 +16134,10 @@ components:
           nano: 5
           currency: "currency"
           units: "units"
+        guaranteeForFutures:
+          nano: 5
+          currency: "currency"
+          units: "units"
         fundsSufficiencyLevel:
           nano: 6
           units: "units"
@@ -15586,6 +16161,8 @@ components:
         amountOfMissingFunds:
           $ref: "#/components/schemas/v1MoneyValue"
         correctedMargin:
+          $ref: "#/components/schemas/v1MoneyValue"
+        guaranteeForFutures:
           $ref: "#/components/schemas/v1MoneyValue"
       type: "object"
     v1GetMarketValuesRequest:
@@ -15642,7 +16219,7 @@ components:
           title: "Номер счета"
           type: "string"
         instrumentId:
-          title: "Идентификатор инструмента, принимает значения Figi или instrument_uid"
+          description: "Идентификатор инструмента. Принимает значение `figi`, `instrument_uid` или `ticker + '_' + class_code`."
           type: "string"
         price:
           $ref: "#/components/schemas/v1Quotation"
@@ -15693,7 +16270,7 @@ components:
           description: "Идентификатор счета клиента, обязательный параметр. Остальные параметры опциональны."
           type: "string"
         instrumentId:
-          description: "Идентификатор инструмента — FIGI или UID инструмента."
+          description: "Идентификатор инструмента. Принимает значение `figi`, `instrument_uid` или `ticker + '_' + class_code`."
           type: "string"
         from:
           description: "Начало периода по UTC."
@@ -16022,7 +16599,7 @@ components:
           title: "Номер счета"
           type: "string"
         instrumentId:
-          title: "Идентификатор инструмента, принимает значения Figi или instrument_uid"
+          description: "Идентификатор инструмента. Принимает значение `figi`, `instrument_uid` или `ticker + '_' + class_code`."
           type: "string"
         price:
           $ref: "#/components/schemas/v1Quotation"
@@ -16384,6 +16961,7 @@ components:
               nano: 5
               currency: "currency"
               units: "units"
+            instantExecution: true
             lotsRequested: "lotsRequested"
             expirationTime: 2000-01-23T04:56:07.000Z
             price:
@@ -16416,6 +16994,7 @@ components:
               nano: 5
               currency: "currency"
               units: "units"
+            instantExecution: true
             lotsRequested: "lotsRequested"
             expirationTime: 2000-01-23T04:56:07.000Z
             price:
@@ -17094,13 +17673,14 @@ components:
       type: "string"
     v1InstrumentIdType:
       default: "INSTRUMENT_ID_UNSPECIFIED"
-      description: "Тип идентификатора инструмента. [Подробнее об идентификации инструментов](./faq_identification/).\n\n - INSTRUMENT_ID_UNSPECIFIED: Значение не определено.\n - INSTRUMENT_ID_TYPE_FIGI: FIGI.\n - INSTRUMENT_ID_TYPE_TICKER: Ticker.\n - INSTRUMENT_ID_TYPE_UID: Уникальный идентификатор.\n - INSTRUMENT_ID_TYPE_POSITION_UID: Идентификатор позиции."
+      description: "Тип идентификатора инструмента. [Подробнее об идентификации инструментов](/invest/intro/intro/faq_identification).\n\n - INSTRUMENT_ID_UNSPECIFIED: Значение не определено.\n - INSTRUMENT_ID_TYPE_FIGI: FIGI.\n - INSTRUMENT_ID_TYPE_TICKER: Ticker.\n - INSTRUMENT_ID_TYPE_UID: Уникальный идентификатор.\n - INSTRUMENT_ID_TYPE_POSITION_UID: Идентификатор позиции.\n - INSTRUMENT_ID_TYPE_ID: Универсальный тип идентификатора инструмента."
       enum:
         - "INSTRUMENT_ID_UNSPECIFIED"
         - "INSTRUMENT_ID_TYPE_FIGI"
         - "INSTRUMENT_ID_TYPE_TICKER"
         - "INSTRUMENT_ID_TYPE_UID"
         - "INSTRUMENT_ID_TYPE_POSITION_UID"
+        - "INSTRUMENT_ID_TYPE_ID"
       type: "string"
     v1InstrumentLink:
       description: "Связь с другим инструментом."
@@ -17114,6 +17694,18 @@ components:
         instrumentUid:
           description: "UID-идентификатор связанного инструмента."
           type: "string"
+      type: "object"
+    v1InstrumentParameter:
+      example:
+        value:
+          nano: 5
+          currency: "currency"
+          units: "units"
+      properties:
+        name:
+          $ref: "#/components/schemas/v1AccountValue"
+        value:
+          $ref: "#/components/schemas/v1MoneyValue"
       type: "object"
     v1InstrumentRequest:
       description: "Запрос получения инструмента по идентификатору."
@@ -17281,7 +17873,7 @@ components:
       type: "string"
     v1InstrumentType:
       default: "INSTRUMENT_TYPE_UNSPECIFIED"
-      description: "Тип инструмента.\n\n - INSTRUMENT_TYPE_BOND: Облигация.\n - INSTRUMENT_TYPE_SHARE: Акция.\n - INSTRUMENT_TYPE_CURRENCY: Валюта.\n - INSTRUMENT_TYPE_ETF: Exchange-traded fund. Фонд.\n - INSTRUMENT_TYPE_FUTURES: Фьючерс.\n - INSTRUMENT_TYPE_SP: Структурная нота.\n - INSTRUMENT_TYPE_OPTION: Опцион.\n - INSTRUMENT_TYPE_CLEARING_CERTIFICATE: Clearing certificate.\n - INSTRUMENT_TYPE_INDEX: Индекс.\n - INSTRUMENT_TYPE_COMMODITY: Товар."
+      description: "Тип инструмента.\n\n - INSTRUMENT_TYPE_BOND: Облигация.\n - INSTRUMENT_TYPE_SHARE: Акция.\n - INSTRUMENT_TYPE_CURRENCY: Валюта.\n - INSTRUMENT_TYPE_ETF: Exchange-traded fund. Фонд.\n - INSTRUMENT_TYPE_FUTURES: Фьючерс.\n - INSTRUMENT_TYPE_SP: Структурная нота.\n - INSTRUMENT_TYPE_OPTION: Опцион.\n - INSTRUMENT_TYPE_CLEARING_CERTIFICATE: Clearing certificate.\n - INSTRUMENT_TYPE_INDEX: Индекс.\n - INSTRUMENT_TYPE_COMMODITY: Товар.\n - INSTRUMENT_TYPE_DFA: Цифровой актив."
       enum:
         - "INSTRUMENT_TYPE_UNSPECIFIED"
         - "INSTRUMENT_TYPE_BOND"
@@ -17294,6 +17886,7 @@ components:
         - "INSTRUMENT_TYPE_CLEARING_CERTIFICATE"
         - "INSTRUMENT_TYPE_INDEX"
         - "INSTRUMENT_TYPE_COMMODITY"
+        - "INSTRUMENT_TYPE_DFA"
       type: "string"
     v1InstrumentsRequest:
       description: "Запрос получения инструментов."
@@ -19768,6 +20361,10 @@ components:
           nano: 5
           currency: "currency"
           units: "units"
+        totalAmountDfa:
+          nano: 5
+          currency: "currency"
+          units: "units"
         dailyYield:
           nano: 5
           currency: "currency"
@@ -19891,6 +20488,8 @@ components:
           $ref: "#/components/schemas/v1MoneyValue"
         dailyYieldRelative:
           $ref: "#/components/schemas/v1Quotation"
+        totalAmountDfa:
+          $ref: "#/components/schemas/v1MoneyValue"
       type: "object"
     v1PortfolioStreamRequest:
       description: "Запрос установки stream-соединения."
@@ -20030,6 +20629,10 @@ components:
             units: "units"
           accountId: "accountId"
           totalAmountCurrencies:
+            nano: 5
+            currency: "currency"
+            units: "units"
+          totalAmountDfa:
             nano: 5
             currency: "currency"
             units: "units"
@@ -20707,7 +21310,7 @@ components:
       description: "Запрос выставления асинхронного торгового поручения."
       properties:
         instrumentId:
-          description: "Идентификатор инструмента, принимает значения Figi или Instrument_uid."
+          description: "Идентификатор инструмента. Принимает значение `figi`, `instrument_uid` или `ticker + '_' + class_code`."
           type: "string"
         quantity:
           description: "Количество лотов."
@@ -20778,7 +21381,7 @@ components:
           description: "Идентификатор запроса выставления поручения для целей идемпотентности в формате UID. Максимальная длина 36 символов."
           type: "string"
         instrumentId:
-          description: "Идентификатор инструмента, принимает значения Figi или Instrument_uid."
+          description: "Идентификатор инструмента. Принимает значение `figi`, `instrument_uid` или `ticker + '_' + class_code`."
           type: "string"
         timeInForce:
           $ref: "#/components/schemas/v1TimeInForceType"
@@ -20920,7 +21523,7 @@ components:
           format: "date-time"
           type: "string"
         instrumentId:
-          description: "Идентификатор инструмента. Принимает значение `figi` или `instrument_uid`."
+          description: "Идентификатор инструмента. Принимает значение `figi`, `instrument_uid` или `ticker + '_' + class_code`."
           type: "string"
         exchangeOrderType:
           $ref: "#/components/schemas/v1ExchangeOrderType"
@@ -20935,6 +21538,9 @@ components:
           type: "string"
         confirmMarginTrade:
           description: "Согласие на выставление заявки, которая может привести к непокрытой позиции, по умолчанию false."
+          type: "boolean"
+        instantExecution:
+          description: "Признак необходимости моментальной активации, используется только для трейлинг-стопа."
           type: "boolean"
       required:
         - "accountId"
@@ -21022,6 +21628,8 @@ components:
         accountId:
           description: "Номер счета."
           type: "string"
+        orderIdType:
+          $ref: "#/components/schemas/v1OrderIdType"
         orderId:
           description: "Идентификатор заявки на бирже."
           type: "string"
@@ -21078,7 +21686,7 @@ components:
     v1RiskRatesRequest:
       properties:
         instrumentId:
-          description: "Идентификаторы инструментов."
+          description: "Идентификатор инструмента. Принимает значение `figi`, `instrument_uid` или `ticker + '_' + class_code`."
           items:
             type: "string"
           type: "array"
@@ -21179,7 +21787,7 @@ components:
       type: "object"
     v1SecurityTradingStatus:
       default: "SECURITY_TRADING_STATUS_UNSPECIFIED"
-      description: "- SECURITY_TRADING_STATUS_UNSPECIFIED: Торговый статус не определен.\n - SECURITY_TRADING_STATUS_NOT_AVAILABLE_FOR_TRADING: Недоступен для торгов.\n - SECURITY_TRADING_STATUS_OPENING_PERIOD: Период открытия торгов.\n - SECURITY_TRADING_STATUS_CLOSING_PERIOD: Период закрытия торгов.\n - SECURITY_TRADING_STATUS_BREAK_IN_TRADING: Перерыв в торговле.\n - SECURITY_TRADING_STATUS_NORMAL_TRADING: Нормальная торговля.\n - SECURITY_TRADING_STATUS_CLOSING_AUCTION: Аукцион закрытия.\n - SECURITY_TRADING_STATUS_DARK_POOL_AUCTION: Аукцион крупных пакетов.\n - SECURITY_TRADING_STATUS_DISCRETE_AUCTION: Дискретный аукцион.\n - SECURITY_TRADING_STATUS_OPENING_AUCTION_PERIOD: Аукцион открытия.\n - SECURITY_TRADING_STATUS_TRADING_AT_CLOSING_AUCTION_PRICE: Период торгов по цене аукциона закрытия.\n - SECURITY_TRADING_STATUS_SESSION_ASSIGNED: Сессия назначена.\n - SECURITY_TRADING_STATUS_SESSION_CLOSE: Сессия закрыта.\n - SECURITY_TRADING_STATUS_SESSION_OPEN: Сессия открыта.\n - SECURITY_TRADING_STATUS_DEALER_NORMAL_TRADING: Доступна торговля в режиме внутренней ликвидности брокера.\n - SECURITY_TRADING_STATUS_DEALER_BREAK_IN_TRADING: Перерыв торговли в режиме внутренней ликвидности брокера.\n - SECURITY_TRADING_STATUS_DEALER_NOT_AVAILABLE_FOR_TRADING: Недоступна торговля в режиме внутренней ликвидности брокера."
+      description: "- SECURITY_TRADING_STATUS_UNSPECIFIED: Торговый статус не определен.\n - SECURITY_TRADING_STATUS_NOT_AVAILABLE_FOR_TRADING: Недоступен для торгов.\n - SECURITY_TRADING_STATUS_OPENING_PERIOD: Период открытия торгов.\n - SECURITY_TRADING_STATUS_CLOSING_PERIOD: Период закрытия торгов.\n - SECURITY_TRADING_STATUS_BREAK_IN_TRADING: Перерыв в торговле.\n - SECURITY_TRADING_STATUS_NORMAL_TRADING: Нормальная торговля.\n - SECURITY_TRADING_STATUS_CLOSING_AUCTION: Аукцион закрытия.\n - SECURITY_TRADING_STATUS_DARK_POOL_AUCTION: Аукцион крупных пакетов.\n - SECURITY_TRADING_STATUS_DISCRETE_AUCTION: Дискретный аукцион.\n - SECURITY_TRADING_STATUS_OPENING_AUCTION_PERIOD: Аукцион открытия.\n - SECURITY_TRADING_STATUS_TRADING_AT_CLOSING_AUCTION_PRICE: Период торгов по цене аукциона закрытия.\n - SECURITY_TRADING_STATUS_SESSION_ASSIGNED: Сессия назначена.\n - SECURITY_TRADING_STATUS_SESSION_CLOSE: Сессия закрыта.\n - SECURITY_TRADING_STATUS_SESSION_OPEN: Сессия открыта.\n - SECURITY_TRADING_STATUS_DEALER_NORMAL_TRADING: Доступна торговля в режиме внутренней ликвидности брокера.\n - SECURITY_TRADING_STATUS_DEALER_BREAK_IN_TRADING: Перерыв торговли в режиме внутренней ликвидности брокера.\n - SECURITY_TRADING_STATUS_DEALER_NOT_AVAILABLE_FOR_TRADING: Недоступна торговля в режиме внутренней ликвидности брокера.\n - SECURITY_TRADING_STATUS_STABILIZATION_AUCTION: Аукцион обновления цен."
       enum:
         - "SECURITY_TRADING_STATUS_UNSPECIFIED"
         - "SECURITY_TRADING_STATUS_NOT_AVAILABLE_FOR_TRADING"
@@ -21198,6 +21806,7 @@ components:
         - "SECURITY_TRADING_STATUS_DEALER_NORMAL_TRADING"
         - "SECURITY_TRADING_STATUS_DEALER_BREAK_IN_TRADING"
         - "SECURITY_TRADING_STATUS_DEALER_NOT_AVAILABLE_FOR_TRADING"
+        - "SECURITY_TRADING_STATUS_STABILIZATION_AUCTION"
       title: "Режим торгов инструмента"
       type: "string"
     v1Share:
@@ -21764,6 +22373,7 @@ components:
           nano: 5
           currency: "currency"
           units: "units"
+        instantExecution: true
         lotsRequested: "lotsRequested"
         expirationTime: 2000-01-23T04:56:07.000Z
         price:
@@ -21829,6 +22439,9 @@ components:
         classCode:
           description: "Класс-код (секция торгов)."
           type: "string"
+        instantExecution:
+          description: "Признак необходимости моментальной активации, используется только для трейлинг-стопа."
+          type: "boolean"
       type: "object"
     v1StopOrderDirection:
       default: "STOP_ORDER_DIRECTION_UNSPECIFIED"
@@ -22197,7 +22810,7 @@ components:
         basicAssets:
           description: "Базовые активы, входящие в ноту."
           items:
-            $ref: "#/components/schemas/StructuredNoteBasicAsset"
+            $ref: "#/components/schemas/v1StructuredNoteBasicAsset"
           type: "array"
         safetyBarrier:
           $ref: "#/components/schemas/v1Quotation"
@@ -22238,6 +22851,22 @@ components:
           items:
             type: "string"
           type: "array"
+      type: "object"
+    v1StructuredNoteBasicAsset:
+      description: "Базовый актив."
+      example:
+        uid: "uid"
+        initialPrice:
+          nano: 6
+          units: "units"
+      properties:
+        uid:
+          description: "Уникальный идентификатор базового актива."
+          type: "string"
+        type:
+          $ref: "#/components/schemas/v1AssetType"
+        initialPrice:
+          $ref: "#/components/schemas/v1Quotation"
       type: "object"
     v1StructuredNoteResponse:
       description: "Данные по структурной ноте."
@@ -23790,6 +24419,10 @@ components:
               units: "units"
             accountId: "accountId"
             totalAmountCurrencies:
+              nano: 5
+              currency: "currency"
+              units: "units"
+            totalAmountDfa:
               nano: 5
               currency: "currency"
               units: "units"

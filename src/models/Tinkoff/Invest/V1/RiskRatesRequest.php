@@ -17,7 +17,7 @@ use Google\Protobuf\RepeatedField;
 class RiskRatesRequest extends \Google\Protobuf\Internal\Message
 {
     /**
-     * Идентификаторы инструментов.
+     * Идентификатор инструмента. Принимает значение `figi`, `instrument_uid` или `ticker + '_' + class_code`.
      *
      * Generated from protobuf field <code>repeated string instrument_id = 1;</code>
      */
@@ -30,7 +30,7 @@ class RiskRatesRequest extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type string[] $instrument_id
-     *           Идентификаторы инструментов.
+     *           Идентификатор инструмента. Принимает значение `figi`, `instrument_uid` или `ticker + '_' + class_code`.
      * }
      */
     public function __construct($data = NULL) {
@@ -39,7 +39,7 @@ class RiskRatesRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Идентификаторы инструментов.
+     * Идентификатор инструмента. Принимает значение `figi`, `instrument_uid` или `ticker + '_' + class_code`.
      *
      * Generated from protobuf field <code>repeated string instrument_id = 1;</code>
      * @return RepeatedField<string>
@@ -50,7 +50,7 @@ class RiskRatesRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Идентификаторы инструментов.
+     * Идентификатор инструмента. Принимает значение `figi`, `instrument_uid` или `ticker + '_' + class_code`.
      *
      * Generated from protobuf field <code>repeated string instrument_id = 1;</code>
      * @param string[] $var

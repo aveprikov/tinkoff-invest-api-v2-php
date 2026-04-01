@@ -17,7 +17,7 @@ use Google\Protobuf\RepeatedField;
 class PostOrderAsyncRequest extends \Google\Protobuf\Internal\Message
 {
     /**
-     *Идентификатор инструмента, принимает значения Figi или Instrument_uid.
+     *Идентификатор инструмента. Принимает значение `figi`, `instrument_uid` или `ticker + '_' + class_code`.
      *
      * Generated from protobuf field <code>string instrument_id = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
@@ -84,7 +84,7 @@ class PostOrderAsyncRequest extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type string $instrument_id
-     *          Идентификатор инструмента, принимает значения Figi или Instrument_uid.
+     *          Идентификатор инструмента. Принимает значение `figi`, `instrument_uid` или `ticker + '_' + class_code`.
      *     @type int|string $quantity
      *          Количество лотов.
      *     @type \Tinkoff\Invest\V1\Quotation $price
@@ -111,7 +111,7 @@ class PostOrderAsyncRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *Идентификатор инструмента, принимает значения Figi или Instrument_uid.
+     *Идентификатор инструмента. Принимает значение `figi`, `instrument_uid` или `ticker + '_' + class_code`.
      *
      * Generated from protobuf field <code>string instrument_id = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      * @return string
@@ -122,7 +122,7 @@ class PostOrderAsyncRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     *Идентификатор инструмента, принимает значения Figi или Instrument_uid.
+     *Идентификатор инструмента. Принимает значение `figi`, `instrument_uid` или `ticker + '_' + class_code`.
      *
      * Generated from protobuf field <code>string instrument_id = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      * @param string $var

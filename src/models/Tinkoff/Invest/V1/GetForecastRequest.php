@@ -17,7 +17,7 @@ use Google\Protobuf\RepeatedField;
 class GetForecastRequest extends \Google\Protobuf\Internal\Message
 {
     /**
-     * Идентификатор инструмента.
+     * Идентификатор инструмента. Принимает значение `figi`, `instrument_uid` или `ticker + '_' + class_code`.
      *
      * Generated from protobuf field <code>string instrument_id = 1;</code>
      */
@@ -30,7 +30,7 @@ class GetForecastRequest extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type string $instrument_id
-     *           Идентификатор инструмента.
+     *           Идентификатор инструмента. Принимает значение `figi`, `instrument_uid` или `ticker + '_' + class_code`.
      * }
      */
     public function __construct($data = NULL) {
@@ -39,7 +39,7 @@ class GetForecastRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Идентификатор инструмента.
+     * Идентификатор инструмента. Принимает значение `figi`, `instrument_uid` или `ticker + '_' + class_code`.
      *
      * Generated from protobuf field <code>string instrument_id = 1;</code>
      * @return string
@@ -50,7 +50,7 @@ class GetForecastRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Идентификатор инструмента.
+     * Идентификатор инструмента. Принимает значение `figi`, `instrument_uid` или `ticker + '_' + class_code`.
      *
      * Generated from protobuf field <code>string instrument_id = 1;</code>
      * @param string $var
