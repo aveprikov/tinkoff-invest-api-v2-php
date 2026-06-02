@@ -61,13 +61,14 @@ REST-методы
 | expiration_type |  [StopOrderExpirationType](#stoporderexpirationtype) | Тип экспирации заявки. |
 | stop_order_type |  [StopOrderType](#stopordertype) | Тип заявки. |
 | expire_date |  [google.protobuf.Timestamp](#googleprotobuftimestamp) | Дата и время окончания действия стоп-заявки по UTC. Для `ExpirationType = GoodTillDate` заполнение обязательно, для `GoodTillCancel` игнорируется. |
-| instrument_id |  [string](#string) | Идентификатор инструмента. Принимает значение `figi` или `instrument_uid`. |
+| instrument_id |  [string](#string) | Идентификатор инструмента. Принимает значение `figi`, `instrument_uid` или `ticker + '_' + class_code`. |
 | exchange_order_type |  [ExchangeOrderType](#exchangeordertype) | Тип дочерней биржевой заявки для тейкпрофита. |
 | take_profit_type |  [TakeProfitType](#takeprofittype) | Подтип стоп-заявки — `TakeProfit`. |
 | trailing_data |  [PostStopOrderRequest.TrailingData](#poststoporderrequesttrailingdata) | Массив с параметрами трейлинг-стопа. |
 | price_type |  [PriceType](#pricetype) | Тип цены. |
 | order_id |  [string](#string) | Идентификатор запроса выставления поручения для целей идемпотентности в формате `UID`. Максимальная длина — 36 символов. |
 | confirm_margin_trade |  [bool](#bool) | Согласие на выставление заявки, которая может привести к непокрытой позиции, по умолчанию `false`. |
+| instant_execution |  [bool](#bool) | Признак необходимости моментальной активации, используется только для трейлинг-стопа. |
 
 
 
@@ -172,6 +173,7 @@ REST-методы
 | exchange_order_id |  [string](#string) | Идентификатор биржевой заявки. |
 | ticker |  [string](#string) | Тикер инструмента. |
 | class_code |  [string](#string) | Класс-код (секция торгов). |
+| instant_execution |  [bool](#bool) | Признак необходимости моментальной активации, используется только для трейлинг-стопа. |
 
 
 

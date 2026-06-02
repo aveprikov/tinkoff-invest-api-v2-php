@@ -107,38 +107,24 @@ title: 'Java/Kotlin',
 {
 content: (
 <div>
-<ol>
-<li>Скачайте <a href="/files/invest/russian_trusted_root_ca_pem.zip" target="_blank" download>корневые</a> и <a href="/files/invest/russian_trusted_sub_ca_pem.zip" target="_blank" download>выпускающие</a> сертификаты.</li>
-<li>Распакуйте архивы.</li>
-</ol>
-<p><strong>Windows</strong></p>
-<ol>
-<li>Откройте средство управления сертификатами.</li>
-<li>Нажмите Win + R, введите <code>certmgr.msc</code> и нажмите Enter.</li>
-<li>В левой панели выберите <strong>Доверенные корневые центры сертификации → Сертификаты</strong>.</li>
-<li>Нажмите правую кнопку мыши → <strong>Все задачи</strong> → <strong>Импорт</strong>.</li>
-<li>Следуйте мастеру импорта и укажите путь к <code>.cer</code> или <code>.crt</code> файлу.</li>
-<li><p>Завершите импорт — сертификат будет доверенным.</p>
-<p>Альтернатива: дважды нажмите на <code>.crt</code>-файл → <strong>Установить сертификат → Локальный компьютер → Поместить в следующее хранилище → Доверенные корневые центры сертификации</strong>.</p>
-</li>
-</ol>
 <p><strong>macOS</strong></p>
-<ol>
-<li>Откройте Keychain Access («Ассистент ключей») — можно найти через <code>Spotlight</code> (cmd + пробел и ввести <code>Keychain Access</code>).</li>
-<li>Перетащите <code>.crt</code> или <code>.pem</code>-файл в раздел <strong>System</strong> или <strong>Login</strong>.</li>
-<li>Дважды кликните на сертификат в хранилище.</li>
-<li>Разверните Trust и для <strong>SSL</strong> установите <strong>Always Trust</strong>.</li>
-<li>Закройте и введите пароль для сохранения изменений.</li>
-<li>Для системного доверия добавьте сертификат в System — для этого понадобятся права администратора.</li>
-</ol>
+<pre><code>
+$ mkdir -p ~/ca-certificates<br/>
+$ curl -o ~/ca-certificates/tinkoff-bundle.crt https://ca-certs.tcsbank.ru/v0/tinkoff-bundle.crt<br/>
+$ curl -o ~/ca-certificates/tinkoff-root.crt https://ca-certs.tcsbank.ru/v0/tinkoff-root.crt<br/>
+$ cat ~/ca-certificates/*.crt > ~/ca-certificates/node_extra_ca_certs.pembundle<br/>
+$ echo 'export NODE_EXTRA_CA_CERTS=~/ca-certificates/node_extra_ca_certs.pembundle' >> ~/.zshenv<br/>
+$ exec zsh
+</code></pre>
 <p><strong>Ubuntu и другие Linux-дистрибутивы на базе Debian/Ubuntu</strong></p>
-<ol>
-<li>Скопируйте сертификат в формате <code>.crt</code> в директорию: <code>sudo cp ваш_сертификат.crt /usr/local/share/ca-certificates/</code>.</li>
-<li><p>Обновите хранилище сертификатов: <code>sudo update-ca-certificates</code>.
-Сертификат будет добавлен в доверенные.</p>
-<p>Формат файла должен быть <code>.crt</code>. Если у вас <code>.pem</code>, переименуйте в <code>.crt</code>.</p>
-</li>
-</ol>
+<pre><code>
+$ mkdir -p ~/ca-certificates<br/>
+$ curl -o ~/ca-certificates/tinkoff-bundle.crt https://ca-certs.tcsbank.ru/v0/tinkoff-bundle.crt<br/>
+$ curl -o ~/ca-certificates/tinkoff-root.crt https://ca-certs.tcsbank.ru/v0/tinkoff-root.crt<br/>
+$ cat ~/ca-certificates/*.crt > ~/ca-certificates/node_extra_ca_certs.pembundle<br/>
+$ echo 'export NODE_EXTRA_CA_CERTS=~/ca-certificates/node_extra_ca_certs.pembundle' >> ~/.bash_profile<br/>
+$ exec bash
+</code></pre>
 </div>
 ),
 title: 'JS',

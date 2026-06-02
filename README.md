@@ -1,14 +1,19 @@
 # tinkoff-invest-api-v2-php
-Unofficial PHP SDK for Tinkoff Invest API v2
+Unofficial PHP SDK for T-Invest API v2
 
-Документация Tinkoff Invest Api для разработчиков доступна по ссылке: https://tinkoff.github.io/investAPI/
+Документация T-Invest Api для разработчиков доступна по ссылке: https://developer.tbank.ru/invest/api
 
 Коммьюнити разработчиков в Telegram: https://t.me/joinchat/VaW05CDzcSdsPULM 
 
+PS: До переименования, Т-Банк и Т-Инвестиции назывались "Тинькофф-банк" и "Тинькофф-Инвестиции", нейминги репозиториев, классов и методов пока сохранены в "старом стиле".
+
+PSS: На основе данной библиотеки написан на PHP робот-покупателя для T-Инвестиций [metaseller/tinkoff-robot-buyer](https://github.com/metaseller/tinkoff-robot-buyer), который реализует две стратегии: (1) - постоянная покупка с заданной скоростью на заданный аккаунт/портфель лотов выбранного ETF. (2) - Автоматическое управление и ребалансировка счета в соответствии с настройками, автоматическое поддержание баланса стоимости акций/облигаций, автоматическая парковка и распарковка свободный средств в денежные фонды.
+
+
 # Введение
 
-Поскольку Tinkoff Invest API v2 в настоящее время позиционируется как gRPC-интерфейс для взаимодействия с торговой платформой 
-Тинькофф Инвестиции, то первое, что нам понадобится - это документация по gRPC:
+Поскольку T-Invest API v2 в настоящее время позиционируется как gRPC-интерфейс для взаимодействия с торговой платформой 
+Т-Инвестиции, то первое, что нам понадобится - это документация по gRPC:
 
 1) Quick start with PHP -> https://grpc.io/docs/languages/php/quickstart/ 
 2) Basic tutorials -> https://grpc.io/docs/languages/php/basics/
@@ -18,7 +23,7 @@ Unofficial PHP SDK for Tinkoff Invest API v2
 ```
 etc - Директория, которая содержит сертификаты для подключения к сервису с использованием SSL
 examples - Директория с примерами подключения к сервису и выполнением простейших запросов
-library - Это фактически копия репозитория https://github.com/Tinkoff/investAPI/
+library - Это фактически копия репозитория https://opensource.tbank.ru/invest/invest-contracts
 library/src/docs/contracts - Директория, которая содержит proto файлы
 src/models - Директория, которая содержит сгенерированные через protoc модели
 ```
@@ -65,7 +70,7 @@ sudo chmod 666 /var/log/grpc.log
 
 # Устанавливаем через composer
 
-PS: Если вы планируете использовать в проекте, разработанном на Yii2 Framework, то можно воспользоваться оберткой [metaseller/tinkoff-invest-api-v2-yii2](https://packagist.org/packages/metaseller/tinkoff-invest-api-v2-yii2).
+PS: Если вы планируете использовать в проекте, разработанном на Yii2 Framework, то можно воспользоваться оберткой [metaseller/tinkoff-invest-api-v2-yii2](https://github.com/metaseller/tinkoff-invest-api-v2-yii2).
 
 Ну либо устанавливаем SDK через [composer](http://getcomposer.org/download/)
 
@@ -78,7 +83,7 @@ $ git clone git@github.com:metaseller/tinkoff-invest-api-v2-php.git .
 composer update
 ```
 
-прописываем свой Tinkoff Invest API v2 token
+прописываем свой T-Invest API v2 token
 ```
 $ vim examples/example.php
 ```
@@ -87,7 +92,7 @@ $ vim examples/example.php
 /**
  * Ваш токен доступа к API
  *
- * @see https://tinkoff.github.io/investAPI/token/
+ * @see https://developer.tbank.ru/invest/intro/intro/token
  */
 $token = 't.ZEbUT................................................7dA';
 ```
@@ -105,7 +110,7 @@ $ php examples/example.php
 /**
  * Ваш токен доступа к API
  *
- * @see https://tinkoff.github.io/investAPI/token/
+ * @see https://developer.tbank.ru/invest/intro/intro/token
  */
 $token = '<Your Tinkoff Invest Account Token>';
 $tinkoff_api = TinkoffClientsFactory::create($token);
@@ -114,8 +119,6 @@ $tinkoff_api = TinkoffClientsFactory::create($token);
  * Создаем экземпляр запроса информации об аккаунте к сервису
  *
  * Запрос не принимает никаких параметров на вход
- *
- * @see https://tinkoff.github.io/investAPI/users/#getinforequest
  */
 $request = new GetInfoRequest();
 
@@ -151,7 +154,7 @@ var_dump(['user_info' => [
 /**
  * Ваш токен доступа к API
  *
- * @see https://tinkoff.github.io/investAPI/token/
+ * @see https://developer.tbank.ru/invest/intro/intro/token
  */
 $token = '<Your Tinkoff Invest Account Token>';
 
@@ -164,8 +167,6 @@ $user_service_client = new UsersServiceClient(ClientConnection::getHostname(), C
  * Создаем экземпляр запроса информации об аккаунте к сервису
  *
  * Запрос не принимает никаких параметров на вход
- *
- * @see https://tinkoff.github.io/investAPI/users/#getinforequest
  */
 $request = new GetInfoRequest();
 
@@ -189,11 +190,11 @@ var_dump(['user_info' => [
 /**
  * Ваш токен доступа к API
  *
- * @see https://tinkoff.github.io/investAPI/token/
+ * @see https://developer.tbank.ru/invest/intro/intro/token
  */
 $token = '<Your Tinkoff Invest Account Token>';
 
-/** Пример получения обновляемого через Stream ({@link MarketDataStreamServiceClient}) стакана по тикеру FB */
+/** Пример получения обновляемого через Stream ({@link MarketDataStreamServiceClient}) стакана по тикеру SBER */
 
 $factory = TinkoffClientsFactory::create($token);
 
@@ -201,9 +202,6 @@ $factory = TinkoffClientsFactory::create($token);
  * Пример получения справочника всех Shares инструментов
  *
  * PS: Само собой, если вам нужен только один инструмент, разумнее использовать метод GetInstrumentBy
- *
- * @see https://tinkoff.github.io/investAPI/instruments/#getinstrumentby
- * @see https://tinkoff.github.io/investAPI/instruments/#instrumentrequest
  */
 
 $instruments_request = new InstrumentsRequest();
@@ -220,7 +218,7 @@ $instruments_dict = $response->getInstruments();
  * Находим в справочнике (коль он у нас весь есть) нужный нам инструмент
  */
 foreach ($instruments_dict as $instrument) {
-    if ($instrument->getTicker() === 'FB') {
+    if ($instrument->getTicker() === 'SBER') {
         $meta_instrument = $instrument;
 
         break;
@@ -233,7 +231,7 @@ if (empty($meta_instrument)) {
     die();
 }
 
-/** Создаем подписку на данные {@link MarketDataRequest}, конкретно по {@link SubscribeOrderBookRequest} по FIGI инструмента META/FB */
+/** Создаем подписку на данные {@link MarketDataRequest}, конкретно по {@link SubscribeOrderBookRequest} по FIGI инструмента SBER */
 $subscription = (new MarketDataRequest())
     ->setSubscribeOrderBookRequest(
         (new SubscribeOrderBookRequest())
@@ -285,8 +283,11 @@ $stream->cancel();
 ```
 
 # Обновления
+- *Вер. 0.5.4 от 2026-06-02*.
 
-- *Вер. 0.5.2 от 2026-04-01*.
+~ Обновление контрактов до версии 1.49
+
+- *Вер. 0.5.3 от 2026-04-01*.
  
 ~ Обновление контрактов до версии 1.48
  

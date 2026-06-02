@@ -1,7 +1,7 @@
 asyncapi: 2.6.0
 info:
   title: T-Invest API
-  version: '1.48'
+  version: '1.49'
   description: Websocket API for streaming data
   license:
     name: Apache 2.0
@@ -1705,6 +1705,7 @@ components:
          - OPERATION_TYPE_OTHER: Операция по счету;
          - OPERATION_TYPE_DFA_REDEMPTION: погашение ЦФА-токена;
          - OPERATION_TYPE_PRIMARY_ORDER: отмена заявки на первичное размещение по ЦФА;
+         - OPERATION_TYPE_FUNDING: Списание фандинга.
       enum:
         - OPERATION_TYPE_UNSPECIFIED
         - OPERATION_TYPE_INPUT
@@ -1773,6 +1774,7 @@ components:
         - OPERATION_TYPE_OTHER
         - OPERATION_TYPE_DFA_REDEMPTION
         - OPERATION_TYPE_PRIMARY_ORDER
+        - OPERATION_TYPE_FUNDING
       type: string
     v1OperationState:
       default: OPERATION_STATE_UNSPECIFIED
@@ -1904,6 +1906,10 @@ components:
               blockedLots:
                 nano: 6
                 units: units
+              varMarginSettled:
+                nano: 5
+                currency: currency
+                units: units
               averagePositionPrice:
                 nano: 5
                 currency: currency
@@ -1952,6 +1958,10 @@ components:
                 units: units
               blockedLots:
                 nano: 6
+                units: units
+              varMarginSettled:
+                nano: 5
+                currency: currency
                 units: units
               averagePositionPrice:
                 nano: 5
@@ -2179,6 +2189,10 @@ components:
             blockedLots:
               nano: 6
               units: units
+            varMarginSettled:
+              nano: 5
+              currency: currency
+              units: units
             averagePositionPrice:
               nano: 5
               currency: currency
@@ -2227,6 +2241,10 @@ components:
               units: units
             blockedLots:
               nano: 6
+              units: units
+            varMarginSettled:
+              nano: 5
+              currency: currency
               units: units
             averagePositionPrice:
               nano: 5
@@ -2419,6 +2437,10 @@ components:
         blockedLots:
           nano: 6
           units: units
+        varMarginSettled:
+          nano: 5
+          currency: currency
+          units: units
         averagePositionPrice:
           nano: 5
           currency: currency
@@ -2482,6 +2504,8 @@ components:
         classCode:
           description: Класс-код (секция торгов).
           type: string
+        varMarginSettled:
+          $ref: '#/components/schemas/v1MoneyValue'
       type: object
     v1VirtualPortfolioPosition:
       example:
@@ -3114,6 +3138,21 @@ components:
           streamId: streamId
           pingRequestTime: '2000-01-23T04:56:07.000+00:00'
           time: '2000-01-23T04:56:07.000+00:00'
+        stopOrderState:
+          accountId: accountId
+          createdAt: '2000-01-23T04:56:07.000+00:00'
+          classCode: classCode
+          stopPrice:
+            nano: 5
+            currency: currency
+            units: units
+          ticker: ticker
+          price:
+            nano: 5
+            currency: currency
+            units: units
+          instrumentUid: instrumentUid
+          stopOrderId: stopOrderId
         subscription:
           streamId: streamId
           accounts:
@@ -3177,6 +3216,8 @@ components:
           $ref: '#/components/schemas/v1Ping'
         subscription:
           $ref: '#/components/schemas/v1SubscriptionResponse'
+        stopOrderState:
+          $ref: '#/components/schemas/OrderStateStreamResponseStopOrderState'
       title: Информация по заявкам
       type: object
     v1OrderStateStreamResponseOrderState:
@@ -3499,6 +3540,73 @@ components:
           description: Описание ошибки.
           type: string
       type: object
+    OrderStateStreamResponseStopOrderState:
+      example:
+        accountId: accountId
+        createdAt: '2000-01-23T04:56:07.000+00:00'
+        classCode: classCode
+        stopPrice:
+          nano: 5
+          currency: currency
+          units: units
+        ticker: ticker
+        price:
+          nano: 5
+          currency: currency
+          units: units
+        instrumentUid: instrumentUid
+        stopOrderId: stopOrderId
+      properties:
+        stopOrderId:
+          description: Идентификатор стоп-заявки.
+          type: string
+        accountId:
+          description: Номер счёта.
+          type: string
+        createdAt:
+          description: Дата создания заявки.
+          format: date-time
+          type: string
+        direction:
+          $ref: '#/components/schemas/v1OrderDirection'
+        price:
+          $ref: '#/components/schemas/v1MoneyValue'
+        stopPrice:
+          $ref: '#/components/schemas/v1MoneyValue'
+        orderType:
+          $ref: '#/components/schemas/v1OrderType'
+        instrumentUid:
+          description: UID идентификатор инструмента.
+          type: string
+        ticker:
+          description: Тикер инструмента.
+          type: string
+        classCode:
+          description: Класс-код.
+          type: string
+        status:
+          $ref: '#/components/schemas/v1StopOrderStatusOption'
+      title: Стоп-ордер
+      type: object
+    v1StopOrderStatusOption:
+      default: STOP_ORDER_STATUS_UNSPECIFIED
+      description: |-
+        Статус стоп-заяки.
+
+         - STOP_ORDER_STATUS_UNSPECIFIED: Значение не указано.
+         - STOP_ORDER_STATUS_ALL: Все заявки.
+         - STOP_ORDER_STATUS_ACTIVE: Активные заявки.
+         - STOP_ORDER_STATUS_EXECUTED: Исполненные заявки.
+         - STOP_ORDER_STATUS_CANCELED: Отмененные заявки.
+         - STOP_ORDER_STATUS_EXPIRED: Истекшие заявки.
+      enum:
+        - STOP_ORDER_STATUS_UNSPECIFIED
+        - STOP_ORDER_STATUS_ALL
+        - STOP_ORDER_STATUS_ACTIVE
+        - STOP_ORDER_STATUS_EXECUTED
+        - STOP_ORDER_STATUS_CANCELED
+        - STOP_ORDER_STATUS_EXPIRED
+      type: string
     v1OrderStateStreamRequest:
       properties:
         accounts:

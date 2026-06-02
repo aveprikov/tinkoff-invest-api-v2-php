@@ -258,7 +258,7 @@ class InstrumentsServiceClient extends \Grpc\BaseStub {
     }
 
     /**
-     * DfaBy — получить цифровой актив по ее идентификатору
+     * DfaBy — получить цифровой актив по его идентификатору
      * @param \Tinkoff\Invest\V1\InstrumentRequest $argument input argument
      * @param array $metadata metadata
      * @param array $options call options
@@ -645,6 +645,21 @@ class InstrumentsServiceClient extends \Grpc\BaseStub {
         return $this->_simpleRequest('/tinkoff.public.invest.api.contract.v1.InstrumentsService/StructuredNotes',
         $argument,
         ['\Tinkoff\Invest\V1\StructuredNotesResponse', 'decode'],
+        $metadata, $options);
+    }
+
+    /**
+     * News — получение актуальных новостей
+     * @param \Tinkoff\Invest\V1\NewsRequest $argument input argument
+     * @param array $metadata metadata
+     * @param array $options call options
+     * @return \Grpc\UnaryCall<\Tinkoff\Invest\V1\NewsResponse>
+     */
+    public function News(\Tinkoff\Invest\V1\NewsRequest $argument,
+      $metadata = [], $options = []) {
+        return $this->_simpleRequest('/tinkoff.public.invest.api.contract.v1.InstrumentsService/News',
+        $argument,
+        ['\Tinkoff\Invest\V1\NewsResponse', 'decode'],
         $metadata, $options);
     }
 

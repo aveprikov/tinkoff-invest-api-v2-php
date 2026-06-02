@@ -23,9 +23,6 @@ sidebar_position: 1
 
 Для получения полного списка стоп-заявок рекомендуем использовать метод [GetStopOrders](/invest/services/stop-orders/stoporders#getstoporders).
 
-Метод вернет только те стоп-заявки, которые еще не были конвертированы в 
-реальные торговые поручения. 
-
 ## Отменить стоп-заявку
 
 Для отмены активной стоп-заявки используйте метод [CancelStopOrder](/invest/services/stop-orders/stoporders#cancelstoporder).

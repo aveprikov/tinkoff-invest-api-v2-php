@@ -159,6 +159,24 @@ Deprecated Список опционов.
 - Тело ответа — [IndicativesResponse](#indicativesresponse)
 
 
+
+### DfaBy
+Получить цифровой актив по его идентификатору.
+
+- Тело запроса — [InstrumentRequest](#instrumentrequest)
+
+- Тело ответа — [DfaResponse](#dfaresponse)
+
+
+### Dfas
+Список цифровых активов.
+
+- Тело запроса — [DfasRequest](#dfasrequest)
+
+- Тело ответа — [DfasResponse](#dfasresponse)
+
+
+
 ### GetAccruedInterests
 Накопленный купонный доход по облигации.
 
@@ -477,7 +495,7 @@ StructuredNotes — список структурных нот.
 | figi |  [string](#string) | FIGI-идентификатор инструмента. |
 | from |  [google.protobuf.Timestamp](#googleprotobuftimestamp) | Начало запрашиваемого периода по UTC. Фильтрация по `coupon_date` — дата выплаты купона. |
 | to |  [google.protobuf.Timestamp](#googleprotobuftimestamp) | Окончание запрашиваемого периода по UTC. Фильтрация по `coupon_date` — дата выплаты купона. |
-| instrument_id |  [string](#string) | Идентификатор инструмента — `figi` или `instrument_uid`. |
+| instrument_id |  [string](#string) | Идентификатор инструмента. Принимает значение `figi`, `instrument_uid` или `ticker + '_' + class_code`. |
 
 
 
@@ -501,7 +519,7 @@ StructuredNotes — список структурных нот.
 | ----- | ---- | ----------- |
 | from |  [google.protobuf.Timestamp](#googleprotobuftimestamp) | Начало запрашиваемого периода по UTC. |
 | to |  [google.protobuf.Timestamp](#googleprotobuftimestamp) | Окончание запрашиваемого периода по UTC. |
-| instrument_id |  [string](#string) | Идентификатор инструмента — `figi` или `instrument_uid`. |
+| instrument_id |  [string](#string) | Идентификатор инструмента. Принимает значение `figi`, `instrument_uid` или `ticker + '_' + class_code`. |
 | type |  [GetBondEventsRequest.EventType](#getbondeventsrequesteventtype) | Тип события |
 
 
@@ -1132,7 +1150,7 @@ StructuredNotes — список структурных нот.
 | figi |  [string](#string) | FIGI-идентификатор инструмента. |
 | from |  [google.protobuf.Timestamp](#googleprotobuftimestamp) | Начало запрашиваемого периода по UTC. |
 | to |  [google.protobuf.Timestamp](#googleprotobuftimestamp) | Окончание запрашиваемого периода по UTC. |
-| instrument_id |  [string](#string) | Идентификатор инструмента — `figi` или `instrument_uid`. |
+| instrument_id |  [string](#string) | Идентификатор инструмента. Принимает значение `figi`, `instrument_uid` или `ticker + '_' + class_code`. |
 
 
 
@@ -1169,7 +1187,7 @@ StructuredNotes — список структурных нот.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | figi |  [string](#string) | Идентификатор инструмента. |
-| instrument_id |  [string](#string) | Идентификатор инструмента — `figi` или `instrument_uid`. |
+| instrument_id |  [string](#string) | Идентификатор инструмента. Принимает значение `figi`, `instrument_uid` или `ticker + '_' + class_code`. |
 
 
 
@@ -1257,7 +1275,7 @@ StructuredNotes — список структурных нот.
 | figi |  [string](#string) | FIGI-идентификатор инструмента. |
 | from |  [google.protobuf.Timestamp](#googleprotobuftimestamp) | Начало запрашиваемого периода по UTC. Фильтрация происходит по параметру `record_date` — дата фиксации реестра. |
 | to |  [google.protobuf.Timestamp](#googleprotobuftimestamp) | Окончание запрашиваемого периода по UTC. Фильтрация происходит по параметру `record_date` — дата фиксации реестра. |
-| instrument_id |  [string](#string) | Идентификатор инструмента — `figi` или `instrument_uid`. |
+| instrument_id |  [string](#string) | Идентификатор инструмента. Принимает значение `figi`, `instrument_uid` или `ticker + '_' + class_code`. |
 
 
 
@@ -1650,7 +1668,7 @@ StructuredNotes — список структурных нот.
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | figi |  [string](#string) | FIGI-идентификатор инструмента. |
-| instrument_id |  [string](#string) | Идентификатор инструмента — `figi` или `instrument_uid`. |
+| instrument_id |  [string](#string) | Идентификатор инструмента. Принимает значение `figi`, `instrument_uid` или `ticker + '_' + class_code`. |
 
 
 
@@ -1985,7 +2003,7 @@ StructuredNotes — список структурных нот.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| instrument_id |  [string](#string) | Идентификатор инструмента в формате UID. |
+| instrument_id |  [string](#string) | Идентификатор инструмента. Принимает значение `figi`, `instrument_uid` или `ticker + '_' + class_code`. |
 | from |  [google.protobuf.Timestamp](#googleprotobuftimestamp) | Начало запрашиваемого периода по UTC. |
 | to |  [google.protobuf.Timestamp](#googleprotobuftimestamp) | Окончание запрашиваемого периода по UTC. |
 
@@ -2070,7 +2088,7 @@ StructuredNotes — список структурных нот.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| instrument_id |  [string](#string) | Идентификатор инструмента. |
+| instrument_id |  [string](#string) | Идентификатор инструмента. Принимает значение `figi`, `instrument_uid` или `ticker + '_' + class_code`. |
 
 
 
@@ -2133,8 +2151,8 @@ StructuredNotes — список структурных нот.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| instrument_id |  [string](#string) | Уникальный идентификатор инструмента. |
-| limit |  [int32](#int32) | Количество сделок в ответе. |
+| instrument_id |  [string](#string) | Идентификатор инструмента. Принимает значение `figi`, `instrument_uid` или `ticker + '_' + class_code`. |
+| limit |  [int32](#int32) | Количество выводимых записей в ответе, не больше 100. |
 | next_cursor |  [string](#string) |  Курсор для получения следующей страницы.|
 
 
@@ -2169,6 +2187,77 @@ StructuredNotes — список структурных нот.
 | disclosure_date |  [google.protobuf.Timestamp](#googleprotobuftimestamp) | Дата раскрытия сделки. |
 
 
+### DfasRequest
+Запрос цифровых активов.
+
+
+
+### DfaResponse
+Цифровые активы.
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| uid |  [string](#string) | Уникальный идентификатор инструмента. |
+| ticker |  [string](#string) | Тикер инструмента. |
+| name |  [string](#string) | Название инструмента. |
+| position_uid |  [string](#string) | Уникальный идентификатор позиции. |
+| min_price_increment |  [Quotation](#quotation) | Шаг цены. |
+| lot |  [int32](#int32) | Количество лотов. |
+| nominal |  [MoneyValue](#moneyvalue) | Номинал. |
+| currency |  [string](#string) | Валюта. |
+| maturity_date |  [google.protobuf.Timestamp](#googleprotobuftimestamp) | Дата погашения ЦФА в формате UTC. |
+| short_enabled_flag |  [bool](#bool) | Признак доступности для операций шорт. |
+| api_trade_available_flag |  [bool](#bool) | Признак доступности торгов по бумаге через API. |
+| buy_available_flag |  [bool](#bool) | Признак доступности для покупки. |
+| sell_available_flag |  [bool](#bool) | Признак доступности для продажи. |
+| limit_order_available_flag |  [bool](#bool) | Признак доступности выставления лимитной заявки по инструменту. |
+| market_order_available_flag |  [bool](#bool) | Признак доступности выставления рыночной заявки по инструменту. |
+| bestprice_order_available_flag |  [bool](#bool) | Признак доступности выставления bestprice заявки по инструменту. |
+| for_iis_flag |  [bool](#bool) | Возможность покупки/продажи на ИИС. |
+| for_qual_investor_flag |  [bool](#bool) | Флаг отображающий доступность торговли инструментом только для квалифицированных инвесторов. |
+| type |  [string](#string) | Тип актива. Возможные значения: credit_portfolio_dfa, debt_dfa. |
+| basic_assets | Массив объектов [DfaResponse.BasicAsset](#dfaresponsebasicasset) | Базовые активы, входящие в ЦФА. |
+| forecast_yield |  [DfaResponse.ForecastYield](#dfaresponseforecastyield) | Прогнозная доходность смарт-портфелей, в виде интервала в %. |
+| yield_to_maturity |  [Quotation](#quotation) | Доходность к погашению в %. |
+| coupon_value |  [Quotation](#quotation) | Величина купона. |
+| coupon_payment_frequency |  [int32](#int32) | Количество выплат в год. |
+| coupon_payment_date |  [google.protobuf.Timestamp](#googleprotobuftimestamp) | Дата выплаты купона. |
+| aci_value |  [Quotation](#quotation) | Значение НКД (накопленного купонного дохода) на дату. |
+
+
+
+### DfaResponse.BasicAsset
+Базовый актив.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| uid |  [string](#string) | UID базового актива |
+
+
+
+### DfaResponse.ForecastYield
+Прогнозная доходность смарт-портфелей.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| min_value |  [Quotation](#quotation) | Минимальное значение прогнозной доходности в % |
+| max_value |  [Quotation](#quotation) | Максимальное значение прогнозной доходности в % |
+
+
+
+### DfasResponse
+Цифровые активы.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| instruments | Массив объектов [DfaResponse](#dfaresponse) | Массив инструментов. |
+
+
 
 ### RiskRatesRequest
 Запрос ставок риска.
@@ -2176,7 +2265,7 @@ StructuredNotes — список структурных нот.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| instrument_id | Массив объектов [string](#string) | Идентификаторы инструментов. |
+| instrument_id | Массив объектов [string](#string) | Идентификаторы инструментов. Принимают значение `figi`, `instrument_uid` или `ticker + '_' + class_code`. |
 
 
 
@@ -2209,6 +2298,8 @@ StructuredNotes — список структурных нот.
 | ----- | ---- | ----------- |
 | risk_level_code |  [string](#string) | Категория риска. |
 | value |  [Quotation](#quotation) | Значение ставки риска. |
+
+
 
 
 ### TradingInterval
@@ -2311,6 +2402,7 @@ StructuredNotes — список структурных нот.
 | INSTRUMENT_ID_TYPE_TICKER | 2 | Ticker. |
 | INSTRUMENT_ID_TYPE_UID | 3 | Уникальный идентификатор. |
 | INSTRUMENT_ID_TYPE_POSITION_UID | 4 | Идентификатор позиции. |
+| INSTRUMENT_ID_TYPE_ID | 5 | Универсальный тип идентификатора инструмента. Принимает значение `figi`, `instrument_uid` или `ticker + '_' + class_code`.|
 
 
 
@@ -2506,6 +2598,7 @@ StructuredNotes — список структурных нот.
 | INSTRUMENT_TYPE_CLEARING_CERTIFICATE | 8 | Clearing certificate |
 | INSTRUMENT_TYPE_INDEX | 9 | Индекс |
 | INSTRUMENT_TYPE_COMMODITY | 10 | Товар |
+| INSTRUMENT_TYPE_DFA | 11 | Цифровой актив |
 
 
 ### InstrumentStatus
