@@ -60,11 +60,12 @@ API реализован на быстром, удобном и функцион
 Вы можете как самостоятельно создать обертку по [proto-контрактам](https://opensource.tbank.ru/invest/invest-contracts/-/tree/master/src/docs/contracts) так воспользоваться одним из SDK:
 
 ## SDK Т-Инвестиций
-* [go](https://github.com/RussianInvestments/invest-api-go-sdk)
+* [go](https://opensource.tbank.ru/invest/invest-go)
 * [python](https://opensource.tbank.ru/invest/invest-python)
 * [java](https://opensource.tbank.ru/invest/invest-java)
-* [csharp](https://github.com/RussianInvestments/invest-api-csharp-sdk)
-* [kotlin](https://github.com/RussianInvestments/invest-api-kotlin-sdk)
+* [csharp](https://opensource.tbank.ru/invest/invest-csharp)
+* [kotlin](https://opensource.tbank.ru/invest/invest-kotlin)
+* [js](https://opensource.tbank.ru/invest/invest-js)
 
 ## Неофициальные SDK
 * [golang](https://github.com/ssummers02/invest-api-go-sdk)
