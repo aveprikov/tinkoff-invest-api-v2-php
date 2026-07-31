@@ -283,6 +283,20 @@ $stream->cancel();
 ```
 
 # Обновления
+- *Вер. 0.5.5 от 2026-07-31*.
+
+~ Изменено поведение метода InstrumentsProvider::loadAllBonds() (https://github.com/metaseller/tinkoff-invest-api-v2-php/blob/5ec37e0256c93cca6a663ac6673797aa71f483ec/src/providers/InstrumentsProvider.php#L1443)
+
+При попытке загрузки инструментов T-Invest API уперлись в лимит ошибку
+
+```
+{"x-tracking-id":null,"code":8,"details":"CLIENT: Received message larger than max (8399159 vs. 8388608)","message":null}
+```
+
+Теперь запрашиваются только инструменты со статусом InstrumentStatus::INSTRUMENT_STATUS_BASE, чтобы уменьшить объем данных. 
+
+И изменен лимит ClientConnection::GRPC_MAX_RECEIVE_MESSAGE_LENGTH до 10mb
+
 - *Вер. 0.5.4 от 2026-06-02*.
 
 ~ Обновление контрактов до версии 1.49

@@ -35,7 +35,7 @@ class ClientConnection
     /**
      * @var int Максимальный размер сообщения в ответе
      */
-    public const GRPC_MAX_RECEIVE_MESSAGE_LENGTH = 8388608;
+    public const GRPC_MAX_RECEIVE_MESSAGE_LENGTH = 10 * 1024 * 1024;
 
     /**
      * Метод получения опций соединения с сервисом Tinkoff Invest API 2
